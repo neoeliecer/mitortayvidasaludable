@@ -1109,6 +1109,68 @@
             50% { box-shadow: 0 0 0 8px rgba(192,86,33,0); }
         }
 
+        /* Delivery form */
+        .delivery-form {
+            margin-top: 20px;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 24px 32px;
+            box-shadow: var(--shadow);
+            border: 1px solid #f0f0f0;
+        }
+
+        .delivery-form h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            margin-bottom: 2px;
+        }
+
+        .delivery-form > p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            margin-bottom: 18px;
+        }
+
+        .delivery-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .delivery-field label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-mid);
+            margin-bottom: 6px;
+        }
+
+        .delivery-field input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            transition: border-color 0.2s;
+        }
+
+        .delivery-field input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .delivery-hint {
+            font-size: 0.72rem;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        @media (max-width: 600px) {
+            .delivery-fields { grid-template-columns: 1fr; }
+        }
+
         /* Status modal */
         .status-modal {
             position: fixed;
@@ -1599,6 +1661,22 @@
                     <div class="status-step"><span class="dot">🚚</span><span>Entrega</span></div>
                 </div>
             </div>
+
+            <div class="delivery-form">
+                <h4>🚚 Datos de entrega (opcionales)</h4>
+                <p>Si dejas la fecha vacía, preparamos tu torta para <strong>hoy</strong>.</p>
+                <div class="delivery-fields">
+                    <div class="delivery-field">
+                        <label for="deliveryAddress">Dirección</label>
+                        <input type="text" id="deliveryAddress" placeholder="Calle, barrio, ciudad">
+                    </div>
+                    <div class="delivery-field">
+                        <label for="deliveryDate">Fecha de entrega</label>
+                        <input type="date" id="deliveryDate">
+                        <div class="delivery-hint">Vacío = hoy</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1811,9 +1889,18 @@
 
             msg += '______________________________\n';
             msg += `TOTAL: *${totalItems} torta(s) / ${formatCOP(total)}*\n\n`;
+            const addr = (document.getElementById('deliveryAddress')?.value || '').trim();
+            let dateVal = document.getElementById('deliveryDate')?.value || '';
+            if (dateVal) {
+                const d = new Date(dateVal + 'T00:00:00');
+                dateVal = d.toLocaleDateString('es-CO', { day: '2-digit', month: 'long', year: 'numeric' });
+            } else {
+                dateVal = new Date().toLocaleDateString('es-CO', { day: '2-digit', month: 'long', year: 'numeric' });
+            }
+
             msg += '- Solicito disponibilidad.\n';
-            msg += '- Entrega en (opcional): \n';
-            msg += '- Fecha de entrega (opcional): \n';
+            msg += `- Entrega en: ${addr || '(a convenir)'}\n`;
+            msg += `- Fecha de entrega: ${dateVal}\n`;
             msg += '- El envio se paga directo con el delivery.\n';
             msg += '______________________________\n';
             msg += '*Mi Torta y Vida Saludable*';
