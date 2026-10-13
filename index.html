@@ -1689,7 +1689,7 @@
     </div>
 
     <script>
-        const CART_KEY = 'mitortayvidasaludable_cart';
+        const CART_KEY = 'mitortayvidasaludable_cart_v2';
         let selectedSize = 'Personal';
         let selectedPrice = 10000;
 
@@ -1719,6 +1719,7 @@
             const existing = cart.find(item => item.size === size);
             if (existing) {
                 existing.qty += 1;
+                existing.price = price;
             } else {
                 cart.push({ size, price, qty: 1, emoji: '🎂', name: `Torta Zanahoria - ${size}` });
             }
