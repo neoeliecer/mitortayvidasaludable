@@ -642,6 +642,115 @@
             .timeline-card { padding: 20px; }
         }
 
+        /* Chefs / Equipo */
+        .chefs-section {
+            background: var(--white);
+            padding: 100px 24px;
+        }
+
+        .chefs-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .chef-card {
+            background: var(--warm-bg);
+            border: 1px solid #f0e6d8;
+            border-radius: 22px;
+            padding: 36px 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .chef-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .chef-avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+        }
+
+        .chef-card:nth-child(2) .chef-avatar {
+            background: linear-gradient(135deg, var(--green), var(--green-light));
+        }
+
+        .chef-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+
+        .chef-role {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--primary);
+            background: rgba(192,86,33,0.1);
+            padding: 4px 14px;
+            border-radius: 14px;
+            margin-bottom: 14px;
+        }
+
+        .chef-card:nth-child(2) .chef-role {
+            color: var(--green);
+            background: rgba(39,103,73,0.1);
+        }
+
+        .chef-card > p {
+            font-size: 0.9rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+        }
+
+        .chef-cert {
+            margin-top: 18px;
+            background: var(--white);
+            border: 1px dashed var(--gold);
+            border-radius: 14px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-align: left;
+        }
+
+        .chef-cert .cert-icon { font-size: 1.6rem; flex-shrink: 0; }
+
+        .chef-cert strong {
+            display: block;
+            font-size: 0.88rem;
+            color: var(--text-dark);
+            margin-bottom: 2px;
+        }
+
+        .chef-cert span {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            line-height: 1.45;
+        }
+
+        @media (max-width: 760px) {
+            .chefs-grid { grid-template-columns: 1fr; }
+        }
+
         /* Ciencia: Beneficios por ingrediente */
         .science-section {
             background: linear-gradient(180deg, #fdf8f0 0%, #fefcf3 100%);
@@ -2083,6 +2192,38 @@
                 <div class="testimonial-stars">★★★★★</div>
                 <p class="testimonial-text">"Como deportista, busco alternativas saludables. Esta torta me da energia sin culpa. Las nueces y la zanahoria son perfectas."</p>
                 <p class="testimonial-author">— Ana P.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipo: Chefs -->
+    <section class="chefs-section" id="equipo">
+        <div class="section-header">
+            <span class="section-tag">Nuestro Equipo</span>
+            <h2 class="section-title">Elaborada por</h2>
+            <p class="section-desc">Detras de cada torta hay manos artesanas y pasion por la cocina saludable.</p>
+        </div>
+
+        <div class="chefs-grid">
+            <div class="chef-card">
+                <div class="chef-avatar">ER</div>
+                <h3>Eliecer Rojas</h3>
+                <span class="chef-role">Maestro Pastelero</span>
+                <p>Corresponsable en la elaboracion de nuestra torta de zanahoria, cuidando cada ingrediente y cada horno para que llegue fresca y perfecta.</p>
+            </div>
+
+            <div class="chef-card">
+                <div class="chef-avatar">MR</div>
+                <h3>Mileidy Ruiz</h3>
+                <span class="chef-role">Sub Chef</span>
+                <p>Corresponsable en la elaboracion, con formacion profesional en artes culinarias.</p>
+                <div class="chef-cert">
+                    <div class="cert-icon">🎓</div>
+                    <div>
+                        <strong>Certificacion de Sub Chef</strong>
+                        <span>Centro de Estudios Gastronomicos (CEGAN) &middot; Guacara, Venezuela</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
