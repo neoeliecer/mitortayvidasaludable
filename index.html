@@ -416,6 +416,232 @@
             color: var(--text-light);
         }
 
+        /* Health: Zanahoria y AOVE */
+        .health-section {
+            background: var(--warm-bg);
+            padding: 100px 24px;
+        }
+
+        .health-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .health-card {
+            background: var(--white);
+            border-radius: 22px;
+            padding: 36px 32px;
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--primary-light);
+        }
+
+        .health-card.olive { border-top-color: var(--green); }
+
+        .health-card-head {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 6px;
+        }
+
+        .health-card-head .hc-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.9rem;
+            flex-shrink: 0;
+        }
+
+        .health-card.carrot .hc-icon { background: linear-gradient(135deg, #fed7aa, #fbd38d); }
+        .health-card.olive .hc-icon { background: linear-gradient(135deg, #c6f6d5, #9ae6b4); }
+
+        .health-card-head h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+        }
+
+        .health-card-head span {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            display: block;
+        }
+
+        .hc-intro {
+            font-size: 0.9rem;
+            color: var(--text-mid);
+            line-height: 1.6;
+            margin: 12px 0 20px;
+        }
+
+        .health-item {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .health-item:last-child { margin-bottom: 0; }
+
+        .health-item .hi-badge {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--warm-bg);
+            border: 1px solid #f0e6d8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+        }
+
+        .health-item h4 {
+            font-size: 0.97rem;
+            margin-bottom: 3px;
+            color: var(--text-dark);
+        }
+
+        .health-item p {
+            font-size: 0.86rem;
+            color: var(--text-mid);
+            line-height: 1.6;
+        }
+
+        .health-stat {
+            display: inline-block;
+            background: rgba(192,86,33,0.1);
+            color: var(--primary-dark);
+            font-weight: 700;
+            padding: 1px 8px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .health-card.olive .health-stat {
+            background: rgba(39,103,73,0.1);
+            color: var(--green);
+        }
+
+        @media (max-width: 860px) {
+            .health-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Historia: Timeline */
+        .history-section {
+            background: var(--white);
+            padding: 100px 24px;
+        }
+
+        .timeline {
+            max-width: 840px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 44px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 21px;
+            top: 10px;
+            bottom: 10px;
+            width: 3px;
+            border-radius: 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--gold), var(--green));
+        }
+
+        .timeline-item { position: relative; margin-bottom: 30px; }
+        .timeline-item:last-child { margin-bottom: 0; }
+
+        .timeline-dot {
+            position: absolute;
+            left: -44px;
+            top: 4px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 3px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            z-index: 2;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .timeline-card {
+            background: var(--warm-bg);
+            border: 1px solid #f0e6d8;
+            border-radius: 18px;
+            padding: 24px 26px;
+        }
+
+        .timeline-era {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--primary);
+            background: rgba(192,86,33,0.1);
+            padding: 4px 12px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .timeline-card > p {
+            font-size: 0.9rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+        }
+
+        .timeline-card ul {
+            list-style: none;
+            margin-top: 12px;
+        }
+
+        .timeline-card li {
+            font-size: 0.87rem;
+            color: var(--text-mid);
+            line-height: 1.55;
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        .timeline-card li:last-child { margin-bottom: 0; }
+
+        .timeline-card li::before {
+            content: '•';
+            position: absolute;
+            left: 2px;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .timeline-card li strong { color: var(--text-dark); }
+
+        @media (max-width: 600px) {
+            .timeline { padding-left: 36px; }
+            .timeline::before { left: 15px; }
+            .timeline-dot { left: -36px; width: 36px; height: 36px; font-size: 1rem; }
+            .timeline-card { padding: 20px; }
+        }
+
         /* Ciencia: Beneficios por ingrediente */
         .science-section {
             background: linear-gradient(180deg, #fdf8f0 0%, #fefcf3 100%);
@@ -1393,6 +1619,107 @@
         </div>
     </section>
 
+    <!-- Beneficios de la Salud: Zanahoria y AOVE -->
+    <section class="health-section" id="salud">
+        <div class="section-header">
+            <span class="section-tag">Beneficios en la Salud</span>
+            <h2 class="section-title">La Zanahoria y el Aceite de Oliva</h2>
+            <p class="section-desc">Dos superalimentos que, combinados en una sola torta, cuidan tu vista, tu corazon y tu digestion.</p>
+        </div>
+
+        <div class="health-grid">
+
+            <!-- Zanahoria -->
+            <div class="health-card carrot">
+                <div class="health-card-head">
+                    <div class="hc-icon">🥕</div>
+                    <div>
+                        <h3>La Zanahoria</h3>
+                        <span>Daucus carota &middot; superalimento imprescindible</span>
+                    </div>
+                </div>
+                <p class="hc-intro">Gracias a sus propiedades nutricionales, es una de las verduras mas valoradas para la alimentacion diaria.</p>
+
+                <div class="health-item">
+                    <div class="hi-badge">👁️</div>
+                    <div>
+                        <h4>Fuente excepcional de Vitamina A y carotenoides</h4>
+                        <p>Rica en <strong>betacaroteno</strong> (6.628 &micro;g/100 g) y alfacaroteno, compuestos que el cuerpo transforma en vitamina A para mantener la vista, la piel y las mucosas. Una zanahoria mediana cubre el <span class="health-stat">89%</span> de las necesidades diarias en hombres y el <span class="health-stat">112%</span> en mujeres.</p>
+                    </div>
+                </div>
+
+                <div class="health-item">
+                    <div class="hi-badge">✨</div>
+                    <div>
+                        <h4>Proteccion ocular especifica</h4>
+                        <p>Contiene <strong>luteina</strong> (288 &micro;g/100 g), un carotenoide que se localiza directamente en la <strong>retina y el cristalino</strong> del ojo.</p>
+                    </div>
+                </div>
+
+                <div class="health-item">
+                    <div class="hi-badge">🌿</div>
+                    <div>
+                        <h4>Aporte multinutriente</h4>
+                        <p>Fibra vegetal, vitamina C, vitamina B6 y minerales esenciales como <strong>potasio, hierro y yodo</strong>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aceite de oliva -->
+            <div class="health-card olive">
+                <div class="health-card-head">
+                    <div class="hc-icon">🫒</div>
+                    <div>
+                        <h3>Aceite de Oliva Virgen Extra</h3>
+                        <span>AOVE &middot; tradicion mediterranea y bienestar</span>
+                    </div>
+                </div>
+                <p class="hc-intro">Destaca por sus multiples beneficios saludables y es ideal en la reposteria artesanal.</p>
+
+                <div class="health-item">
+                    <div class="hi-badge">❤️</div>
+                    <div>
+                        <h4>Salud cardiovascular</h4>
+                        <p>Mejora la salud del corazon y ayuda a proteger el sistema cardiovascular.</p>
+                    </div>
+                </div>
+
+                <div class="health-item">
+                    <div class="hi-badge">⚖️</div>
+                    <div>
+                        <h4>Regulacion del colesterol</h4>
+                        <p>Su acido oleico reduce el colesterol malo (LDL) y aumenta el colesterol bueno (HDL).</p>
+                    </div>
+                </div>
+
+                <div class="health-item">
+                    <div class="hi-badge">🛡️</div>
+                    <div>
+                        <h4>Potentes propiedades antioxidantes</h4>
+                        <p>Rico en polifenoles que neutralizan los radicales libres y frenan el envejecimiento celular.</p>
+                    </div>
+                </div>
+
+                <div class="health-item">
+                    <div class="hi-badge">🎂</div>
+                    <div>
+                        <h4>Sustituto nutritivo de la mantequilla</h4>
+                        <p>En la reposteria artesanal realza el sabor y la textura de los bizcochos, eliminando el colesterol y las grasas trans.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner sinergia absorption -->
+        <div class="synergy-banner">
+            <div class="synergy-icon">✨</div>
+            <div>
+                <h4>La sinergia: de 11% a 75% de absorcion</h4>
+                <p>Los carotenoides de la zanahoria son <strong>liposolubles</strong> (necesitan grasa). Al cocinarlos junto al AOVE, la biodisponibilidad del betacaroteno pasa de un <strong>~11% en crudo a cerca de un ~75%</strong>. Al rallar la zanahoria se rompe su estructura celular y se liberan aun mas nutrientes. Tradicion mediterranea y bienestar fisico en cada rebanada.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Galeria -->
     <section class="section" id="galeria">
         <div class="section-header">
@@ -1409,6 +1736,61 @@
             </div>
             <div class="gallery-item">
                 <img src="imagenes/Gemini_Generated_Image_k7an95k7an95k7an.jfif" alt="Torta de zanahoria saludable">
+            </div>
+        </div>
+    </section>
+
+    <!-- Historia de la Torta de Zanahoria -->
+    <section class="history-section" id="historia">
+        <div class="section-header">
+            <span class="section-tag">Historia</span>
+            <h2 class="section-title">La Trayectoria de la Torta de Zanahoria</h2>
+            <p class="section-desc">Un viaje fascinante de adaptacion gastronomica: desde la escasez medieval hasta convertirse en un clasico de la reposteria internacional.</p>
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-dot">🏰</div>
+                <div class="timeline-card">
+                    <span class="timeline-era">Siglos XVI &ndash; XIX</span>
+                    <h3>El origen medieval: la zanahoria como endulzante</h3>
+                    <p>En la Europa de la Edad Media, el azucar refinado y la miel eran ingredientes escasos y costosos, reservados para la nobleza y los conventos.</p>
+                    <ul>
+                        <li>La zanahoria es una de las verduras con <strong>mayor azucar natural</strong> (solo superada por la remolacha), por lo que se uso para elaborar pudines dulces y bizcochos.</li>
+                        <li><strong>1591:</strong> se publica en Inglaterra una receta temprana de pudin de raiz de zanahoria.</li>
+                        <li><strong>1814:</strong> Antoine Beauvilliers, exchef de Luis XVI, incluye el <strong>&ldquo;Gateau de Carottes&rdquo;</strong> en su libro de cocina.</li>
+                        <li><strong>Siglo XIX:</strong> en Suiza se documenta la tradicional <strong>R&uuml;blitorte</strong> a traves de la escuela de Kaiseraugst.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot">🌍</div>
+                <div class="timeline-card">
+                    <span class="timeline-era">Segunda Guerra Mundial</span>
+                    <h3>Racionamiento y estrategia militar</h3>
+                    <p>El verdadero resurgimiento y popularizacion del pastel de zanahoria ocurrio en el Reino Unido durante la guerra.</p>
+                    <ul>
+                        <li>Por el desabastecimiento de azucar, el <strong>Ministerio de Alimentacion britanico</strong> impulso la zanahoria como endulzante accesible para las familias.</li>
+                        <li>El Ministerio de Salud promovio que comer zanahorias mejoraba la <strong>vision nocturna</strong> de los pilotos de la Royal Air Force.</li>
+                        <li>En realidad era una <strong>propaganda para ocultar la invencion del radar</strong>; esa campana disparo el consumo de la hortaliza en tartas y dulces.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot">🎂</div>
+                <div class="timeline-card">
+                    <span class="timeline-era">Era moderna</span>
+                    <h3>El exito en Estados Unidos y el mundo</h3>
+                    <p>Aunque George Washington ya disfrutaba de este postre en una taberna de Manhattan, el impulso comercial moderno llego tras la guerra.</p>
+                    <ul>
+                        <li>El empresario <strong>George C. Page</strong>, ante un gran excedente de latas de zanahorias en conserva, contrato a maestros pasteleros para crear recetas de tarta de zanahoria.</li>
+                        <li><strong>Anos 60:</strong> se masifica en las cafeterias de EE.UU. y se fija el perfil moderno al añadirse la <strong>cobertura de queso crema (frosting)</strong>, impulsada por la marca Philadelphia.</li>
+                        <li><strong>3 de febrero:</strong> se instauro el <strong>Dia Internacional de la Tarta de Zanahoria</strong>.</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -1712,6 +2094,8 @@
         <div class="footer-links">
             <a href="#ingredientes">Ingredientes</a>
             <a href="#beneficios">Beneficios</a>
+            <a href="#salud">Salud</a>
+            <a href="#historia">Historia</a>
             <a href="#tienda">Tienda</a>
         </div>
         <p class="footer-copy">2026 Mi Torta y Vida Saludable. Todos los derechos reservados.</p>
