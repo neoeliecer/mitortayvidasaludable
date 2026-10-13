@@ -1388,20 +1388,15 @@
                     <div class="product-pricing">
                         <p class="price-label">Elige tu tamano:</p>
                         <div class="price-options">
-                            <div class="price-option selected" data-price="8.00" data-size="Personal" onclick="selectSize(this)">
+                            <div class="price-option selected" data-price="10000" data-size="Personal" onclick="selectSize(this)">
                                 <div class="size">Personal</div>
-                                <div class="price">$8.00</div>
-                                <div class="per">6 porciones</div>
+                                <div class="price">$10.000</div>
+                                <div class="per">1 porción (pedazo)</div>
                             </div>
-                            <div class="price-option" data-price="15.00" data-size="Familiar" onclick="selectSize(this)">
-                                <div class="size">Familiar</div>
-                                <div class="price">$15.00</div>
-                                <div class="per">12 porciones</div>
-                            </div>
-                            <div class="price-option" data-price="22.00" data-size="Para Eventos" onclick="selectSize(this)">
-                                <div class="size">Para Eventos</div>
-                                <div class="price">$22.00</div>
-                                <div class="per">20 porciones</div>
+                            <div class="price-option" data-price="100000" data-size="Torta Completa" onclick="selectSize(this)">
+                                <div class="size">Torta Completa</div>
+                                <div class="price">$100.000</div>
+                                <div class="per">10 porciones</div>
                             </div>
                         </div>
                     </div>
@@ -1472,7 +1467,7 @@
         <div class="cart-footer" id="cartFooter" style="display: none;">
             <div class="cart-total">
                 <span>Total:</span>
-                <span id="cartTotal">$0.00</span>
+                <span id="cartTotal">$0</span>
             </div>
             <button class="btn-whatsapp" onclick="sendWhatsApp()">
                 📲 Pedir por WhatsApp
@@ -1486,7 +1481,11 @@
     <script>
         const CART_KEY = 'mitortayvidasaludable_cart';
         let selectedSize = 'Personal';
-        let selectedPrice = 8.00;
+        let selectedPrice = 10000;
+
+        function formatCOP(value) {
+            return '$' + Number(value).toLocaleString('es-CO');
+        }
 
         function selectSize(el) {
             document.querySelectorAll('.price-option').forEach(o => o.classList.remove('selected'));
@@ -1558,7 +1557,7 @@
                         <span class="cart-item-emoji">${item.emoji}</span>
                         <div class="cart-item-info">
                             <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">$${item.price.toFixed(2)} c/u</div>
+                            <div class="cart-item-price">${formatCOP(item.price)} c/u</div>
                         </div>
                         <div class="cart-item-qty">
                             <button class="qty-btn" onclick="updateQty('${item.size}', -1)">-</button>
@@ -1570,7 +1569,7 @@
                 cartFooter.style.display = 'block';
             }
 
-            document.getElementById('cartTotal').textContent = `$${totalPrice.toFixed(2)}`;
+            document.getElementById('cartTotal').textContent = formatCOP(totalPrice);
         }
 
         function openCart() {
@@ -1596,14 +1595,15 @@
 
             cart.forEach(item => {
                 msg += `🎂 *${item.name}*\n`;
-                msg += `   ${item.qty} x $${item.price.toFixed(2)} = *$${(item.qty * item.price).toFixed(2)}*\n\n`;
+                msg += `   ${item.qty} x ${formatCOP(item.price)} = *${formatCOP(item.qty * item.price)}*\n\n`;
             });
 
             msg += '______________________________\n';
-            msg += `TOTAL: *${totalItems} torta(s) / $${total.toFixed(2)}*\n\n`;
+            msg += `TOTAL: *${totalItems} torta(s) / ${formatCOP(total)}*\n\n`;
             msg += '- Solicito disponibilidad.\n';
-            msg += '- Entregar en: [tu direccion]\n';
-            msg += '- Fecha de entrega: [fecha]\n';
+            msg += '- Entrega en (opcional): \n';
+            msg += '- Fecha de entrega (opcional): \n';
+            msg += '- El envio se paga directo con el delivery.\n';
             msg += '______________________________\n';
             msg += '*Mi Torta y Vida Saludable*';
 
