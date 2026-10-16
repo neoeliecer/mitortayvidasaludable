@@ -668,6 +668,104 @@
             border: 0;
         }
 
+        /* Bitacora de la cocina */
+        .log-section {
+            background: var(--warm-bg);
+            padding: 100px 24px;
+        }
+
+        .log-feed {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .log-entry {
+            display: flex;
+            gap: 20px;
+            background: var(--white);
+            border: 1px solid #f0e6d8;
+            border-radius: 16px;
+            padding: 22px 24px;
+            align-items: flex-start;
+        }
+
+        .log-date {
+            flex-shrink: 0;
+            width: 64px;
+            text-align: center;
+            background: var(--warm-bg);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 8px 4px;
+            color: var(--primary);
+        }
+
+        .log-date .log-day {
+            display: block;
+            font-size: 1.6rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .log-date .log-month {
+            display: block;
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .log-date .log-year {
+            display: block;
+            font-size: 0.6rem;
+            color: var(--text-light);
+        }
+
+        .log-body { flex: 1; }
+
+        .log-status {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+
+        .status-progress { background: rgba(237,137,54,0.12); color: var(--primary); }
+        .status-done { background: rgba(72,187,120,0.14); color: var(--green); }
+        .status-new { background: rgba(39,103,73,0.12); color: var(--green); }
+
+        .log-body h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+
+        .log-body p {
+            font-size: 0.9rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+        }
+
+        .log-empty {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            padding: 20px;
+        }
+
+        @media (max-width: 520px) {
+            .log-entry { flex-direction: column; gap: 12px; }
+            .log-date { width: auto; display: inline-flex; align-items: baseline; gap: 6px; padding: 6px 14px; }
+            .log-date .log-day, .log-date .log-month, .log-date .log-year { display: inline; }
+        }
+
         /* Campanas */
         .campaigns-section {
             background: var(--warm-bg);
@@ -2480,6 +2578,30 @@
                 <div class="campaign-body">
                     <span class="campaign-date">📅 16 oct 2026</span>
                     <h4>Torta Diabetica Recien Horneada</h4>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Bitacora de la cocina -->
+    <section class="log-section" id="bitacora">
+        <div class="section-header">
+            <span class="section-tag">Bitacora</span>
+            <h2 class="section-title">Desde Nuestra Cocina</h2>
+            <p class="section-desc">El diario de cada preparacion: que se esta horneando hoy y las nuevas recetas que vamos creando.</p>
+        </div>
+
+        <div class="log-feed">
+            <article class="log-entry">
+                <div class="log-date">
+                    <span class="log-day">16</span>
+                    <span class="log-month">OCT</span>
+                    <span class="log-year">2026</span>
+                </div>
+                <div class="log-body">
+                    <span class="log-status status-progress">🔄 En preparacion</span>
+                    <h4>Nueva receta saludable para diabeticos</h4>
+                    <p>Hoy se esta haciendo una torta saludable con nuestra <strong>nueva receta para diabeticos</strong>: sin panela, con harina de avena y linaza, muy poca harina de trigo y endulzada con frutos del monje. Un bizcocho esponjoso y de bajo indice glucemico.</p>
                 </div>
             </article>
         </div>
