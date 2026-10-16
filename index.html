@@ -668,6 +668,75 @@
             border: 0;
         }
 
+        /* Campanas */
+        .campaigns-section {
+            background: var(--warm-bg);
+            padding: 100px 24px;
+        }
+
+        .campaigns-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .campaign-card {
+            background: var(--white);
+            border: 1px solid #f0e6d8;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .campaign-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .campaign-img {
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background: #f0e6d8;
+        }
+
+        .campaign-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .campaign-body { padding: 16px 18px; }
+
+        .campaign-date {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--primary);
+            background: rgba(192,86,33,0.1);
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+
+        .campaign-body h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.02rem;
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 860px) {
+            .campaigns-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 560px) {
+            .campaigns-grid { grid-template-columns: 1fr; }
+        }
+
         /* Chefs / Equipo */
         .chefs-section {
             background: var(--white);
@@ -2375,6 +2444,47 @@
         </div>
     </section>
 
+    <!-- Campanas -->
+    <section class="campaigns-section" id="campanas">
+        <div class="section-header">
+            <span class="section-tag">Campanas</span>
+            <h2 class="section-title">Nuestros Lanzamientos</h2>
+            <p class="section-desc">Cada lanzamiento de nuestras tortas queda aqui como recuerdo y cronograma de nuestras campanas.</p>
+        </div>
+
+        <div class="campaigns-grid">
+            <article class="campaign-card">
+                <div class="campaign-img">
+                    <img src="imagenes/campa%C3%B1as/Torta%20saludable%20de%20frutos%20del%20monje.png" alt="Torta saludable de frutos del monje" loading="lazy">
+                </div>
+                <div class="campaign-body">
+                    <span class="campaign-date">📅 16 oct 2026</span>
+                    <h4>Torta Diabetica — Frutos del Monje</h4>
+                </div>
+            </article>
+
+            <article class="campaign-card">
+                <div class="campaign-img">
+                    <img src="imagenes/campa%C3%B1as/WhatsApp%20Image%202026-10-16%20at%201.58.41%20PM.jpeg" alt="Campana torta diabetica" loading="lazy">
+                </div>
+                <div class="campaign-body">
+                    <span class="campaign-date">📅 16 oct 2026</span>
+                    <h4>Detalle de la Torta Diabetica</h4>
+                </div>
+            </article>
+
+            <article class="campaign-card">
+                <div class="campaign-img">
+                    <img src="imagenes/campa%C3%B1as/WhatsApp%20Image%202026-10-16%20at%201.59.12%20PM.jpeg" alt="Campana torta diabetica" loading="lazy">
+                </div>
+                <div class="campaign-body">
+                    <span class="campaign-date">📅 16 oct 2026</span>
+                    <h4>Torta Diabetica Recien Horneada</h4>
+                </div>
+            </article>
+        </div>
+    </section>
+
     <!-- Equipo: Chefs -->
     <section class="chefs-section" id="equipo">
         <div class="section-header">
@@ -2418,6 +2528,7 @@
             <a href="#historia">Historia</a>
             <a href="#video">Video</a>
             <a href="#tienda">Tienda</a>
+            <a href="#campanas">Campañas</a>
         </div>
 
         <div class="footer-contact">
