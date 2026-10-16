@@ -1093,6 +1093,66 @@
             box-shadow: 0 8px 24px rgba(192,86,33,0.3);
         }
 
+        /* Segundo producto (Torta Diabetica) */
+        .product-card-main + .product-divider + .product-card-main { margin-top: 0; }
+
+        .product-divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 40px 0 32px;
+            color: var(--text-light);
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .product-divider::before,
+        .product-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e2e8f0;
+        }
+
+        .product-visual.placeholder {
+            background: linear-gradient(135deg, #c6f6d5, #9ae6b4);
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .product-visual.placeholder .ph-emoji {
+            font-size: 6rem;
+            line-height: 1;
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
+        }
+
+        .product-visual.placeholder .ph-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--green);
+            background: rgba(255,255,255,0.75);
+            padding: 6px 18px;
+            border-radius: 20px;
+        }
+
+        .price-option.green:hover,
+        .price-option.green.selected {
+            border-color: var(--green);
+            background: rgba(39,103,73,0.05);
+        }
+
+        .price-option.green .price { color: var(--green); }
+
+        .add-to-cart-main.green {
+            background: linear-gradient(135deg, var(--green), var(--green-light));
+        }
+
+        .add-to-cart-main.green:hover {
+            box-shadow: 0 8px 24px rgba(39,103,73,0.3);
+        }
+
         /* Cart Sidebar */
         .cart-sidebar {
             position: fixed;
@@ -2193,12 +2253,12 @@
                     <div class="product-pricing">
                         <p class="price-label">Elige tu tamano:</p>
                         <div class="price-options">
-                            <div class="price-option selected" data-price="10000" data-size="Personal" onclick="selectSize(this)">
+                            <div class="price-option selected" data-product="zanahoria" data-price="10000" data-size="Personal" onclick="selectSize(this)">
                                 <div class="size">Personal</div>
                                 <div class="price">$10.000</div>
                                 <div class="per">1 porción (pedazo)</div>
                             </div>
-                            <div class="price-option" data-price="100000" data-size="Torta Completa" onclick="selectSize(this)">
+                            <div class="price-option" data-product="zanahoria" data-price="100000" data-size="Torta Completa" onclick="selectSize(this)">
                                 <div class="size">Torta Completa</div>
                                 <div class="price">$100.000</div>
                                 <div class="per">10 porciones</div>
@@ -2206,7 +2266,50 @@
                         </div>
                     </div>
 
-                    <button class="add-to-cart-main" onclick="addToCartFromMain()">
+                    <button class="add-to-cart-main" onclick="addToCartFromMain('zanahoria')">
+                        🛒 Agregar al Carrito
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-divider"><span>También en nuestra tienda</span></div>
+
+            <div class="product-card-main">
+                <div class="product-visual placeholder">
+                    <span class="product-badge-process">🔄 Horneada al pedido</span>
+                    <div class="ph-emoji">🍰</div>
+                    <span class="ph-label">Torta Diabética</span>
+                </div>
+                <div class="product-details">
+                    <h2>Torta Diabética</h2>
+                    <p class="product-desc">Pensada para diabeticos y para quien cuida el azucar. <strong>Sin panela y sin azucar blanca</strong>: endulzada con <strong>frutos del monje</strong>. Lleva harina de <strong>avena</strong> y <strong>linaza</strong> con muy poca harina de trigo, para un bizcocho esponjoso y de bajo indice glucemico.</p>
+
+                    <div class="product-tags">
+                        <span class="product-tag tag-green">🌾 Harina de Avena</span>
+                        <span class="product-tag tag-green">🌱 Harina de Linaza</span>
+                        <span class="product-tag tag-green">🍃 Frutos del Monje</span>
+                        <span class="product-tag tag-orange">Sin Panela</span>
+                        <span class="product-tag tag-orange">Muy Poca Harina</span>
+                        <span class="product-tag tag-green">🩺 Apto Diabeticos</span>
+                    </div>
+
+                    <div class="product-pricing">
+                        <p class="price-label">Elige tu tamano:</p>
+                        <div class="price-options">
+                            <div class="price-option green selected" data-product="diabetica" data-price="12000" data-size="Personal" onclick="selectSize(this)">
+                                <div class="size">Personal</div>
+                                <div class="price">$12.000</div>
+                                <div class="per">1 porción (pedazo)</div>
+                            </div>
+                            <div class="price-option green" data-product="diabetica" data-price="120000" data-size="Torta Completa" onclick="selectSize(this)">
+                                <div class="size">Torta Completa</div>
+                                <div class="price">$120.000</div>
+                                <div class="per">10 porciones</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="add-to-cart-main green" onclick="addToCartFromMain('diabetica')">
                         🛒 Agregar al Carrito
                     </button>
                 </div>
@@ -2382,19 +2485,26 @@
     </div>
 
     <script>
-        const CART_KEY = 'mitortayvidasaludable_cart_v2';
-        let selectedSize = 'Personal';
-        let selectedPrice = 10000;
+        const CART_KEY = 'mitortayvidasaludable_cart_v3';
+        const PRODUCTS = {
+            zanahoria: { name: 'Torta de Zanahoria', emoji: '🥕' },
+            diabetica: { name: 'Torta Diabética', emoji: '🍰' }
+        };
+
+        const selections = {
+            zanahoria: { size: 'Personal', price: 10000 },
+            diabetica: { size: 'Personal', price: 12000 }
+        };
 
         function formatCOP(value) {
             return '$' + Number(value).toLocaleString('es-CO');
         }
 
         function selectSize(el) {
-            document.querySelectorAll('.price-option').forEach(o => o.classList.remove('selected'));
+            const product = el.dataset.product;
+            el.closest('.price-options').querySelectorAll('.price-option').forEach(o => o.classList.remove('selected'));
             el.classList.add('selected');
-            selectedSize = el.dataset.size;
-            selectedPrice = parseFloat(el.dataset.price);
+            selections[product] = { size: el.dataset.size, price: parseFloat(el.dataset.price) };
         }
 
         function getCart() {
@@ -2407,34 +2517,37 @@
             updateCartUI();
         }
 
-        function addToCart(size, price) {
+        function addToCart(productId, size, price) {
+            const meta = PRODUCTS[productId];
+            const id = `${productId}|${size}`;
             let cart = getCart();
-            const existing = cart.find(item => item.size === size);
+            const existing = cart.find(item => item.id === id);
             if (existing) {
                 existing.qty += 1;
                 existing.price = price;
             } else {
-                cart.push({ size, price, qty: 1, emoji: '🎂', name: `Torta Zanahoria - ${size}` });
+                cart.push({ id, productId, name: `${meta.name} - ${size}`, size, price, qty: 1, emoji: meta.emoji });
             }
             saveCart(cart);
-            showToast(`Torta ${size} agregada al carrito`);
+            showToast(`${meta.name} (${size}) agregada al carrito`);
         }
 
-        function addToCartFromMain() {
-            addToCart(selectedSize, selectedPrice);
+        function addToCartFromMain(productId) {
+            const sel = selections[productId];
+            addToCart(productId, sel.size, sel.price);
         }
 
-        function removeFromCart(size) {
-            let cart = getCart().filter(item => item.size !== size);
+        function removeFromCart(id) {
+            let cart = getCart().filter(item => item.id !== id);
             saveCart(cart);
         }
 
-        function updateQty(size, delta) {
+        function updateQty(id, delta) {
             let cart = getCart();
-            const item = cart.find(i => i.size === size);
+            const item = cart.find(i => i.id === id);
             if (!item) return;
             item.qty += delta;
-            if (item.qty <= 0) cart = cart.filter(i => i.size !== size);
+            if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
             saveCart(cart);
         }
 
@@ -2464,9 +2577,9 @@
                             <div class="cart-item-price">${formatCOP(item.price)} c/u</div>
                         </div>
                         <div class="cart-item-qty">
-                            <button class="qty-btn" onclick="updateQty('${item.size}', -1)">-</button>
+                            <button class="qty-btn" onclick="updateQty('${item.id}', -1)">-</button>
                             <span class="qty-value">${item.qty}</span>
-                            <button class="qty-btn" onclick="updateQty('${item.size}', 1)">+</button>
+                            <button class="qty-btn" onclick="updateQty('${item.id}', 1)">+</button>
                         </div>
                     </div>
                 `).join('');
@@ -2493,7 +2606,7 @@
             const total = cart.reduce((s, i) => s + (i.price * i.qty), 0);
             const totalItems = cart.reduce((s, i) => s + i.qty, 0);
 
-            let msg = '*Pedido - Torta de Zanahoria Saludable*\n';
+            let msg = '*Pedido - Mi Torta y Vida Saludable*\n';
             msg += '______________________________\n\n';
             msg += '*Mi Pedido:*\n\n';
 
